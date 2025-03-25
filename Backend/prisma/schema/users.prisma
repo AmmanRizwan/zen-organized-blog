@@ -1,0 +1,14 @@
+model Users {
+  id        String    @id @default(uuid())
+  name      String    @db.VarChar(40)
+  username  String    @unique @db.VarChar(25)
+  email     String    @unique @db.VarChar(50)
+  password  String    @db.VarChar(100)
+  bio       String?   @db.VarChar(250)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  post      Post[]
+  comment   Comment[]
+  likes     Likes[]
+  save      Save[]
+}

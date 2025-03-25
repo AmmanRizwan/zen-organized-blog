@@ -1,0 +1,11 @@
+model Likes {
+  id        String   @id @default(uuid())
+  likeuser  String   @db.VarChar(100)
+  isLiked   Boolean  @default(false)
+  postId    String
+  userId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  users     Users    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

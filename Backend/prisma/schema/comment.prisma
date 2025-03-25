@@ -1,0 +1,10 @@
+model Comment {
+  id        String   @id @default(uuid())
+  content   String   @db.VarChar(250)
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  users     Users    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

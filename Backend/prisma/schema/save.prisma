@@ -1,0 +1,11 @@
+model Save {
+  id        String   @id @default(uuid())
+  postData  String
+  userId    String
+  postId    String
+  isSaved   Boolean  @default(false)
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user      Users    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
