@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { userSignup } from "@/lib/fetchdata/userApi";
+import FrontImage from "@/assets/sign-login-blog.png";
 
 interface ISignup {
   name: string;
@@ -130,7 +131,7 @@ export function Signup({ className, ...props }: React.ComponentProps<"div">) {
           </form>
           <div className="bg-muted relative hidden md:block">
             <img
-              src="./src/assets/sign-login-blog.png"
+              src={FrontImage}
               alt="Image"
               className="absolute inset-0 h-full w-full object-cover"
             />

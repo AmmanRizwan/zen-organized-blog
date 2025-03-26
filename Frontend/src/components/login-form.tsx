@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { userLogin } from "@/lib/fetchdata/userApi";
 import { useState } from "react";
+import FrontImage from "@/assets/sign-login-blog.png";
 
 export function LoginForm({
   className,
@@ -107,7 +108,7 @@ export function LoginForm({
           </form>
           <div className="bg-muted relative hidden md:block">
             <img
-              src={"./src/assets/sign-login-blog.png"}
+              src={FrontImage}
               alt="Image"
               className="absolute inset-0 h-full w-full object-cover"
             />
