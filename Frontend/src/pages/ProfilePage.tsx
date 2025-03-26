@@ -38,7 +38,7 @@ export default function ProfilePage() {
         <CustomHead title="Blogs" description="" />
         <ListBlogs />
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 sm:grid-cols-1 gap-4 pb-20">
-          {userBlogs.post?.length >= 0 ? (
+          {userBlogs.post?.length > 0 ? (
             userBlogs.post?.map((blog: IUserBlogs) => {
               return (
                 <ProfileBlogTemplate
