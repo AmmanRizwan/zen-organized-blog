@@ -1,13 +1,2 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 27.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#231F20;}
-	.st1{fill:#FFFFFF;}
-	.st2{font-family:'AdobeArabic-Regular';}
-	.st3{font-size:17.0023px;}
-</style>
-<rect class="st0" width="32" height="32"/>
-<text transform="matrix(1 0 0 1 5.5229 16.7933)" class="st1 st2 st3">زوب</text>
-</svg>
+<?xml version="1.0" encoding="utf-8" ?>
+<svg baseProfile="tiny" height="500px" version="1.2" width="500px" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs /><circle cx="250px" cy="250px" fill="black" r="250px" /><text fill="white" font-family="Arial" font-size="220px" font-weight="bold" x="50px" y="270px">زوب</text></svg>
