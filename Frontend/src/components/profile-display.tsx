@@ -19,7 +19,7 @@ export default function ProfileDisplay({ username }: { username: string }) {
         <Avatar className="w-[200px] h-[200px]">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback className="text-[100px] font-medium capitalize">
-            {profile.name.slice(0, 1)}
+            {profile?.name?.slice(0, 1)}
           </AvatarFallback>
         </Avatar>
       </div>
