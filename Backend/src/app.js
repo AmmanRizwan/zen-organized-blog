@@ -18,7 +18,7 @@ const app = express();
 // Cross Site Resource Sharing
 app.use(
   cors({
-    origin: "https://zen-organized-blog-server.onrender.com/api",
+    origin: "https://zen-organized-blog.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
