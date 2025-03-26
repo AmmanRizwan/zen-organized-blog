@@ -47,6 +47,7 @@ const items = [
 
 export function AppSidebar() {
   const data_value = useContext(DataContext);
+  const { userData }: any = useContext(DataContext);
 
   if (!data_value?.isAuth) {
     return null;
@@ -88,8 +89,8 @@ export function AppSidebar() {
       <SidebarFooter>
         <NavUser
           user={{
-            name: "amman",
-            email: "ammanrizwan@gmail.com",
+            name: userData?.name,
+            email: userData?.email,
             avatar: "https://github.com/shadcn.png",
           }}
         />

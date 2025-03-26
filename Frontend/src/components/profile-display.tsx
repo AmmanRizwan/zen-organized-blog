@@ -24,9 +24,9 @@ export default function ProfileDisplay({ username }: { username: string }) {
         </Avatar>
       </div>
       <div>
-        <p className="text-2xl font-medium">{profile.name}</p>
-        <p className="text-muted-foreground font-medium">{profile.username}</p>
-        <p className="font-medium text-sm mb-8">{profile.email}</p>
+        <p className="text-2xl font-medium">{profile?.name}</p>
+        <p className="text-muted-foreground font-medium">{profile?.username}</p>
+        <p className="font-medium text-sm mb-8">{profile?.email}</p>
         {profile?.bio?.length >= 0 ? (
           <>
             <p className="text-muted-foreground font-medium text-sm">Bio</p>
