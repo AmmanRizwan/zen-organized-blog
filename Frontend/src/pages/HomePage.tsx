@@ -75,8 +75,6 @@ export default function HomePage() {
     );
   }
 
-  console.log(Blogs);
-
   return (
     <div className="w-full flex justify-center">
       <div className="my-2">

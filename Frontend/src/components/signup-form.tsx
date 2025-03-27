@@ -9,7 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 import { userSignup } from "@/lib/fetchdata/userApi";
 import FrontImage from "@/assets/sign-login-blog.png";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 
 interface ISignup {
   name: string;
@@ -25,6 +25,8 @@ export function Signup({ className, ...props }: React.ComponentProps<"div">) {
     password: "",
     email: "",
   });
+
+  const [hide, setHide] = useState<boolean>(true);
 
   const { mutateAsync: signup, isPending } = useMutation({
     mutationFn: userSignup,
@@ -91,24 +93,36 @@ export function Signup({ className, ...props }: React.ComponentProps<"div">) {
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
                 </div>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Enter Password"
-                  value={newUser.password}
-                  onChange={(e) =>
-                    setNewUser((prev) => ({
-                      ...prev,
-                      password: e.target.value,
-                    }))
-                  }
-                  required
-                />
+                <div>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      name="password"
+                      type={hide ? "password" : "text"}
+                      placeholder="Enter Password"
+                      value={newUser.password}
+                      className="pr-[34px]"
+                      onChange={(e) =>
+                        setNewUser((prev) => ({
+                          ...prev,
+                          password: e.target.value,
+                        }))
+                      }
+                      required
+                    />
+                    <div className="absolute top-[10px] right-[15px] cursor-pointer">
+                      {hide ? (
+                        <Eye size={18} onClick={() => setHide(false)} />
+                      ) : (
+                        <EyeOff size={18} onClick={() => setHide(true)} />
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
               <Button
                 type="button"
-                className="w-full"
+                className="w-full select-none"
                 onClick={async () => {
                   const data = await signup(newUser);
                   if (data?.error) {

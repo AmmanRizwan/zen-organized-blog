@@ -9,7 +9,7 @@ import { userLogin } from "@/lib/fetchdata/userApi";
 import { useState } from "react";
 import FrontImage from "@/assets/sign-login-blog.png";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 
 export function LoginForm({
   className,
@@ -19,6 +19,8 @@ export function LoginForm({
     username: string;
     password: string;
   }>({ username: "", password: "" });
+
+  const [hide, setHide] = useState<boolean>(true);
 
   const { mutateAsync: login, isPending } = useMutation({
     mutationFn: userLogin,
@@ -62,23 +64,35 @@ export function LoginForm({
                     Forgot your password?
                   </Link>
                 </div>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Enter Password"
-                  value={userDetail.password}
-                  onChange={(e) =>
-                    setUserDetail((prev) => ({
-                      ...prev,
-                      password: e.target.value,
-                    }))
-                  }
-                />
+                <div>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      name="password"
+                      type={hide ? "password" : "text"}
+                      placeholder="Enter Password"
+                      value={userDetail.password}
+                      className="pr-[34px]"
+                      onChange={(e) =>
+                        setUserDetail((prev) => ({
+                          ...prev,
+                          password: e.target.value,
+                        }))
+                      }
+                    />
+                    <div className="absolute top-[10px] right-[15px] cursor-pointer">
+                      {hide ? (
+                        <Eye size={18} onClick={() => setHide(false)} />
+                      ) : (
+                        <EyeOff size={18} onClick={() => setHide(true)} />
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
               <Button
                 type="button"
-                className="w-full"
+                className="w-full select-none"
                 onClick={async () => {
                   const data = await login(userDetail);
                   if (data?.error) {

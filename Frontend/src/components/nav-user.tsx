@@ -111,8 +111,7 @@ export function NavUser({
             <DropdownMenuItem
               variant={"destructive"}
               onClick={async () => {
-                const result = await logout();
-                console.log(await result);
+                await logout();
                 localStorage.removeItem("user");
                 window.location.href = "/login";
               }}
