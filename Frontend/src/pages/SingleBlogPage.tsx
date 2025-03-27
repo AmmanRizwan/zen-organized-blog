@@ -1,6 +1,8 @@
 import TemplateBlog from "@/components/template-blog";
+import { Skeleton } from "@/components/ui/skeleton";
 import { singleBlog } from "@/lib/fetchdata/blogApi";
 import { useQuery } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
 import { useParams, Params } from "react-router-dom";
 
 export default function SingleBlogPage() {
@@ -12,7 +14,30 @@ export default function SingleBlogPage() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex w-full justify-center">
+        <div className="flex flex-col">
+          <div className="sm:block hidden">
+            <div className="flex gap-4 my-3 items-center">
+              <div>
+                <Skeleton className="w-11 h-11 rounded-full" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Skeleton className="w-[250px] h-[12px]" />
+                <Skeleton className="w-[200px] h-[12px]" />
+              </div>
+            </div>
+            <div>
+              <Skeleton className="sm:w-[457px] sm:h-[350px] mb-4 rounded-none" />
+            </div>
+          </div>
+        </div>
+        <div className="sm:hidden flex justify-center items-center gap-2 flex-col text-muted-foreground ">
+          <Loader2 className="animate-spin w-12 h-12" />
+          <p>Loading Blogs</p>
+        </div>
+      </div>
+    );
   }
 
   return (

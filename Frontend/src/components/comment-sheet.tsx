@@ -1,4 +1,4 @@
-import { MessageCircle, MoreHorizontal, Send } from "lucide-react";
+import { Info, MessageCircle, MoreHorizontal, Send } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import {
@@ -32,7 +32,6 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { toast } from "sonner";
-import { Skeleton } from "./ui/skeleton";
 
 export interface IComment {
   id: string;
@@ -48,7 +47,7 @@ export default function CommentSheet({ id }: { id: string }) {
   const { userData }: any = useContext(DataContext);
   const queryClient = useQueryClient();
 
-  const { data: comments, isLoading } = useQuery({
+  const { data: comments } = useQuery({
     queryKey: ["comments", id],
     queryFn: () => allComment(id),
     enabled: !!id,
@@ -86,24 +85,6 @@ export default function CommentSheet({ id }: { id: string }) {
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
   const [updateId, setUpdateId] = useState<string>("");
 
-  if (isLoading) {
-    return (
-      <div className="pl-6 pr-3 flex justify-between items-center gap-4 my-4">
-        <div className="flex gap-3">
-          <div className="flex">
-            <Skeleton className="w-10 h-10" />
-          </div>
-          <div className="flex flex-col">
-            <div className="flex gap-4 items-center">
-              <Skeleton className="w-[90px] h-[10px]" />
-            </div>
-            <Skeleton className="w-[90px] h-[10px]" />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <Sheet>
       <SheetTrigger>
@@ -116,87 +97,100 @@ export default function CommentSheet({ id }: { id: string }) {
         </SheetHeader>
         <ScrollArea className="h-full overflow-auto">
           {/* Start of the main comment to be similar */}
-          {comments?.map((bun: IComment) => {
-            return (
-              <div
-                className="pl-6 pr-3 flex justify-between items-center gap-4 my-4"
-                key={bun.id}
-              >
-                <div className="flex gap-3">
-                  <div className="flex">
-                    <Avatar className="w-10 h-10">
-                      <AvatarFallback className="capitalize">
-                        {bun.users.username.slice(0, 1)}
-                      </AvatarFallback>
-                    </Avatar>
-                  </div>
-                  <div className="flex flex-col">
-                    <div className="flex gap-4 items-center">
-                      <div className="text-[13px] font-medium">
-                        {bun.users.username}
-                      </div>
+          {comments?.length > 0 ? (
+            comments?.map((bun: IComment) => {
+              return (
+                <div
+                  className="pl-6 pr-3 flex justify-between items-center gap-4 my-4"
+                  key={bun.id}
+                >
+                  <div className="flex gap-3">
+                    <div className="flex">
+                      <Avatar className="w-10 h-10">
+                        <AvatarFallback className="capitalize">
+                          {bun.users.username.slice(0, 1)}
+                        </AvatarFallback>
+                      </Avatar>
                     </div>
-                    <div className="text-[14px] ">{bun.content}</div>
+                    <div className="flex flex-col">
+                      <div className="flex gap-4 items-center">
+                        <div className="text-[13px] font-medium">
+                          {bun.users.username}
+                        </div>
+                      </div>
+                      <div className="text-[14px] ">{bun.content}</div>
+                    </div>
+                  </div>
+
+                  <div>
+                    {/* <Ellipsis size={18} /> */}
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="h-8 w-8 p-0">
+                          <span className="sr-only">Open menu</span>
+                          <MoreHorizontal />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem
+                          onClick={async () => {
+                            if (bun.userId === userData.id) {
+                              const data = await singlecomment(bun.id);
+                              // console.log(data);
+                              setContent(data.content);
+                              setIsUpdating(true);
+                              setUpdateId(bun.id);
+                              return;
+                            }
+                            toast("Error", {
+                              description:
+                                "You are not the own of this comment",
+                            });
+                          }}
+                        >
+                          Update
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          variant={"destructive"}
+                          onClick={async () => {
+                            if (bun.userId === userData.id) {
+                              await deletecomment(bun.id);
+                              // console.log(await data);
+                              toast("Comment", {
+                                description: "Comment deleted Successfully",
+                              });
+                              return;
+                            }
+                            toast("Error", {
+                              description:
+                                "You are not the own of this comment",
+                            });
+                          }}
+                        >
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </div>
                 </div>
-
-                <div>
-                  {/* <Ellipsis size={18} /> */}
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="h-8 w-8 p-0">
-                        <span className="sr-only">Open menu</span>
-                        <MoreHorizontal />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem
-                        onClick={async () => {
-                          if (bun.userId === userData.id) {
-                            const data = await singlecomment(bun.id);
-                            // console.log(data);
-                            setContent(data.content);
-                            setIsUpdating(true);
-                            setUpdateId(bun.id);
-                            return;
-                          }
-                          toast("Error", {
-                            description: "You are not the own of this comment",
-                          });
-                        }}
-                      >
-                        Update
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        variant={"destructive"}
-                        onClick={async () => {
-                          if (bun.userId === userData.id) {
-                            await deletecomment(bun.id);
-                            // console.log(await data);
-                            toast("Comment", {
-                              description: "Comment deleted Successfully",
-                            });
-                            return;
-                          }
-                          toast("Error", {
-                            description: "You are not the own of this comment",
-                          });
-                        }}
-                      >
-                        Delete
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </div>
+              );
+            })
+          ) : (
+            <div className="flex flex-col justify-center items-center gap-3 my-10">
+              <div>
+                <Info size={50} />
               </div>
-            );
-          })}
+              <div className="text-muted-foreground">
+                No Comments on this Post
+              </div>
+            </div>
+          )}
           {/* End of the main comment to be similar */}
         </ScrollArea>
         <SheetFooter>
-          <div className="flex gap-3">
+          <div className="flex gap-1">
             <Input
               placeholder="Enter Your Comment"
               className="rounded-full pl-6 text-sm sm:text-md"
@@ -204,6 +198,7 @@ export default function CommentSheet({ id }: { id: string }) {
               onChange={(e) => setContent(e.target.value)}
             />
             <Button
+              className="rounded-full -ml-10"
               onClick={async () => {
                 if (isUpdating) {
                   await updatecomment({ id: updateId, content });

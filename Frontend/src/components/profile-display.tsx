@@ -14,12 +14,13 @@ export default function ProfileDisplay({ username }: { username: string }) {
     return (
       <div className="flex items-center gap-10 sm:flex-row flex-col">
         <div className="my-4">
-          <Skeleton className="w-[200px] h-[200px]" />
+          <Skeleton className="w-[200px] h-[200px] rounded-full" />
         </div>
-        <div>
-          <Skeleton className="w-[90px] h-[10px]" />
-          <Skeleton className="w-[100px] h-[10px]" />
-          <Skeleton className="w-[120px] h-[10px]" />
+        <div className="flex gap flex-col gap-3">
+          <Skeleton className="w-[200px] h-[14px]" />
+          <Skeleton className="w-[170px] h-[13px]" />
+          <Skeleton className="w-[120px] h-[12px]" />
+          <Skeleton className="w-[255px] h-[20px] mt-10" />
         </div>
       </div>
     );

@@ -12,7 +12,7 @@ import {
   BookmarkIcon,
   Check,
   Ellipsis,
-  Link2Off,
+  Link2,
   QrCodeIcon,
   Trash2Icon,
 } from "lucide-react";
@@ -96,9 +96,9 @@ export default function OptionDialog({
             onClick={handleClick}
           >
             {copy ? (
-              <Link2Off size={30} className="transform -rotate-45" />
+              <Check size={30} className="transform" />
             ) : (
-              <Check size={30} className="transform -rotate-45" />
+              <Link2 size={30} className="transform -rotate-45" />
             )}
           </div>
 
