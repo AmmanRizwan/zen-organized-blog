@@ -1,5 +1,4 @@
 import CustomHead from "@/components/custom-head";
-import ListBlogs from "@/components/lists-blog";
 import ProfileBlogTemplate from "@/components/profile-blog-template";
 import ProfileDisplay from "@/components/profile-display";
 import { userBlog } from "@/lib/fetchdata/blogApi";
@@ -36,7 +35,6 @@ export default function ProfilePage() {
         <CustomHead title="User Profile" description="" />
         <ProfileDisplay username={username!} />
         <CustomHead title="Blogs" description="" />
-        <ListBlogs />
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 sm:grid-cols-1 gap-4 pb-20">
           {userBlogs.post?.length > 0 ? (
             userBlogs.post?.map((blog: IUserBlogs) => {
