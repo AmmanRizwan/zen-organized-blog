@@ -168,8 +168,7 @@ export function CommentDrawer({ id }: { id: string }) {
                         variant={"destructive"}
                         onClick={async () => {
                           if (bun.userId === userData.id) {
-                            const data = await deletecomment(bun.id);
-                            // console.log(await data);
+                            await deletecomment(bun.id);
                             toast("Comment", {
                               description: "Comment deleted Successfully",
                             });
@@ -201,13 +200,13 @@ export function CommentDrawer({ id }: { id: string }) {
             <Button
               onClick={async () => {
                 if (isUpdating) {
-                  const data = await updatecomment({ id: updateId, content });
+                  await updatecomment({ id: updateId, content });
                   toast("Comment", {
                     description: "Commment has updated",
                   });
                   setContent("");
                 } else {
-                  const data = await postcomment({ id, content });
+                  await postcomment({ id, content });
                   toast("Comment", {
                     description: "Comment has added",
                   });

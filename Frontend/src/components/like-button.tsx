@@ -21,16 +21,14 @@ export default function LikeButton({
           stroke="red"
           fill="red"
           onClick={async () => {
-            const data = await likebtnFn(postId);
-            // console.log(await data);
+            await likebtnFn(postId);
           }}
         />
       ) : (
         <Heart
           className="cursor-pointer"
           onClick={async () => {
-            const data = await likebtnFn(postId);
-            // console.log(await data);
+            await likebtnFn(postId);
           }}
         />
       )}

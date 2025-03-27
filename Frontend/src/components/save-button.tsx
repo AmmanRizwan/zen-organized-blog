@@ -21,16 +21,14 @@ export default function SaveButton({
           stroke="gray/10"
           fill="gray/10"
           onClick={async () => {
-            const data = await savebtnFn(saveId);
-            // console.log(await data);
+            await savebtnFn(saveId);
           }}
         />
       ) : (
         <Bookmark
           className="cursor-pointer"
           onClick={async () => {
-            const data = await savebtnFn(saveId);
-            // console.log(await data);
+            await savebtnFn(saveId);
           }}
         />
       )}

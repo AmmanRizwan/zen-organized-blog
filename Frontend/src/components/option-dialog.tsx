@@ -77,16 +77,14 @@ export default function OptionDialog({
               <BookmarkCheck
                 size={30}
                 onClick={async () => {
-                  const data = await savebtnFn(saveId);
-                  // console.log(await data);
+                  await savebtnFn(saveId);
                 }}
               />
             ) : (
               <BookmarkIcon
                 size={30}
                 onClick={async () => {
-                  const data = await savebtnFn(saveId);
-                  // console.log(await data);
+                  await savebtnFn(saveId);
                 }}
               />
             )}
@@ -133,11 +131,10 @@ export default function OptionDialog({
           className="text-muted-foreground flex gap-3 items-center"
           onClick={async () => {
             if (blogOwner === userData.id) {
-              const data = await removeblog({ id: blogId });
+              await removeblog({ id: blogId });
               toast("Blog Post", {
                 description: "Blog post deleted Successfully",
               });
-              // console.log(data);
               return;
             }
             toast("Error", {
