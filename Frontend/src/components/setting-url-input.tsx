@@ -13,7 +13,7 @@ export default function SettingURLInput({ username }: { username: string }) {
           placeholder="Your URL"
           id="message-2"
           readOnly
-          defaultValue={`localhost:5173/profile/${username}`}
+          defaultValue={`zen-organized-blog.vercel.app/profile/${username}`}
         />
       </div>
     </>
