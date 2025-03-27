@@ -17,7 +17,7 @@ import { QRCodeSVG } from "qrcode.react";
 
 export default function ShareDialog({ username }: { username: string }) {
   const inputValue = useRef<HTMLInputElement>(null);
-  const BASEURL = `http://localhost:3000/profile/${username}`;
+  const BASEURL = `https://zen-organized-blog.vercel.app/profile/${username}`;
 
   const handleClick = () => {
     if (inputValue.current) {

@@ -8,6 +8,8 @@ import { useMutation } from "@tanstack/react-query";
 import { userLogin } from "@/lib/fetchdata/userApi";
 import { useState } from "react";
 import FrontImage from "@/assets/sign-login-blog.png";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export function LoginForm({
   className,
@@ -18,7 +20,7 @@ export function LoginForm({
     password: string;
   }>({ username: "", password: "" });
 
-  const { mutateAsync: login } = useMutation({
+  const { mutateAsync: login, isPending } = useMutation({
     mutationFn: userLogin,
   });
 
@@ -80,15 +82,31 @@ export function LoginForm({
                 onClick={async () => {
                   const data = await login(userDetail);
                   if (data?.error) {
-                    console.log(await data);
+                    // console.log(await data);
+                    toast("Error", {
+                      description: data?.error,
+                    });
                     return;
                   }
                   localStorage.setItem("user", JSON.stringify(data));
-                  console.log(await data);
-                  window.location.href = "/";
+                  // console.log(await data);
+                  toast("User Login", {
+                    description: "User Login Successfully",
+                  });
+                  setTimeout(() => {
+                    window.location.href = "/";
+                  }, 1000);
                 }}
+                disabled={isPending}
               >
-                Login
+                {isPending ? (
+                  <>
+                    <Loader2 className="animate-spin" />{" "}
+                    <span>Please Wait</span>
+                  </>
+                ) : (
+                  "Login"
+                )}
               </Button>
               <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
                 <span className="bg-background text-muted-foreground relative z-10 px-2">

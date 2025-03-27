@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import ShareDialog from "./share-dailog";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { getProfile } from "@/lib/fetchdata/userApi";
+import { Skeleton } from "./ui/skeleton";
 
 export default function ProfileDisplay({ username }: { username: string }) {
   const { data: profile, isLoading } = useQuery({
@@ -10,7 +11,18 @@ export default function ProfileDisplay({ username }: { username: string }) {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex items-center gap-10 sm:flex-row flex-col">
+        <div className="my-4">
+          <Skeleton className="w-[200px] h-[200px]" />
+        </div>
+        <div>
+          <Skeleton className="w-[90px] h-[10px]" />
+          <Skeleton className="w-[100px] h-[10px]" />
+          <Skeleton className="w-[120px] h-[10px]" />
+        </div>
+      </div>
+    );
   }
 
   return (

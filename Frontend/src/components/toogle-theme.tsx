@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 export default function ToggleTheme() {
   const [theme, setValueTheme] = useState<string>(
@@ -80,7 +81,14 @@ export default function ToggleTheme() {
         </Label>
       </RadioGroup>
       <a href={"/appearance"}>
-        <Button className="mt-10">Update Appearance</Button>
+        <Button
+          className="mt-10"
+          onClick={() =>
+            toast("Appearance", { description: "Your Appearance has updated" })
+          }
+        >
+          Update Appearance
+        </Button>
       </a>
     </div>
   );

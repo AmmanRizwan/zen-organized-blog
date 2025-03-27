@@ -22,7 +22,7 @@ export default function LikeButton({
           fill="red"
           onClick={async () => {
             const data = await likebtnFn(postId);
-            console.log(await data);
+            // console.log(await data);
           }}
         />
       ) : (
@@ -30,7 +30,7 @@ export default function LikeButton({
           className="cursor-pointer"
           onClick={async () => {
             const data = await likebtnFn(postId);
-            console.log(await data);
+            // console.log(await data);
           }}
         />
       )}

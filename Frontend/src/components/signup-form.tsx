@@ -8,6 +8,8 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { userSignup } from "@/lib/fetchdata/userApi";
 import FrontImage from "@/assets/sign-login-blog.png";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 interface ISignup {
   name: string;
@@ -24,7 +26,7 @@ export function Signup({ className, ...props }: React.ComponentProps<"div">) {
     email: "",
   });
 
-  const { mutateAsync: signup } = useMutation({
+  const { mutateAsync: signup, isPending } = useMutation({
     mutationFn: userSignup,
   });
 
@@ -110,15 +112,30 @@ export function Signup({ className, ...props }: React.ComponentProps<"div">) {
                 onClick={async () => {
                   const data = await signup(newUser);
                   if (data?.error) {
-                    console.log(await data);
+                    // console.log(await data);
+                    toast("Error", {
+                      description: data?.error,
+                    });
                     return;
                   }
                   localStorage.setItem("user", JSON.stringify(data));
-                  console.log(await data);
-                  window.location.href = "/";
+                  // console.log(await data);
+                  toast("User SignUp", {
+                    description: "User Signup Successfully",
+                  });
+                  setTimeout(() => {
+                    window.location.href = "/";
+                  }, 1000);
                 }}
+                disabled={isPending}
               >
-                Sign up
+                {isPending ? (
+                  <>
+                    <Loader2 className="animate-spin" /> Please Wait
+                  </>
+                ) : (
+                  "Sign up"
+                )}
               </Button>
 
               <div className="text-center text-sm">

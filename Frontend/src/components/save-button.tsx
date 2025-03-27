@@ -22,7 +22,7 @@ export default function SaveButton({
           fill="gray/10"
           onClick={async () => {
             const data = await savebtnFn(saveId);
-            console.log(await data);
+            // console.log(await data);
           }}
         />
       ) : (
@@ -30,7 +30,7 @@ export default function SaveButton({
           className="cursor-pointer"
           onClick={async () => {
             const data = await savebtnFn(saveId);
-            console.log(await data);
+            // console.log(await data);
           }}
         />
       )}

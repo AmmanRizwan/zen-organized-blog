@@ -1,4 +1,5 @@
 import TemplateBlog from "@/components/template-blog";
+import { Skeleton } from "@/components/ui/skeleton";
 import { allBlogs } from "@/lib/fetchdata/blogApi";
 import { useQuery } from "@tanstack/react-query";
 
@@ -23,7 +24,31 @@ export default function HomePage() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <div className="sm:w-[475px] sm:p-0 pl-4 pr-5">
+          <div className="flex justify-between items-center py-2">
+            <div className="flex gap-3 items-center">
+              <div>
+                <Skeleton className="w-11 h-11" />
+              </div>
+              <div className="flex flex-col">
+                <div className="font-medium text-lg">
+                  <Skeleton className="w-[60px] h-[8px]" />
+                </div>
+                <div className="text-md font-medium text-muted-foreground select-none">
+                  <Skeleton className="w-[50px] h-[8px]" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <Skeleton className="sm:w-[457px] w-full" />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   console.log(Blogs);

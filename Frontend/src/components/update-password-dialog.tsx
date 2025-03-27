@@ -97,12 +97,12 @@ export function UpdatePasswordDialog() {
               onClick={async () => {
                 const data = await changing_password(passwordDetail);
                 if (data?.error) {
-                  console.log(data);
-                  toast("Change Password", { description: data.error });
+                  // console.log(data);
+                  toast("Error", { description: data.error });
                   return;
                 }
                 setPasswordDetail({ exist_password: "", new_password: "" });
-                console.log(data);
+                // console.log(data);
                 toast("Change Password", { description: data.message });
               }}
             >

@@ -31,6 +31,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { toast } from "sonner";
+import { Skeleton } from "./ui/skeleton";
 
 export interface IComment {
   id: string;
@@ -46,7 +48,7 @@ export default function CommentSheet({ id }: { id: string }) {
   const { userData }: any = useContext(DataContext);
   const queryClient = useQueryClient();
 
-  const { data: comments } = useQuery({
+  const { data: comments, isLoading } = useQuery({
     queryKey: ["comments", id],
     queryFn: () => allComment(id),
     enabled: !!id,
@@ -83,6 +85,24 @@ export default function CommentSheet({ id }: { id: string }) {
   const [content, setContent] = useState<string>("");
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
   const [updateId, setUpdateId] = useState<string>("");
+
+  if (isLoading) {
+    return (
+      <div className="pl-6 pr-3 flex justify-between items-center gap-4 my-4">
+        <div className="flex gap-3">
+          <div className="flex">
+            <Skeleton className="w-10 h-10" />
+          </div>
+          <div className="flex flex-col">
+            <div className="flex gap-4 items-center">
+              <Skeleton className="w-[90px] h-[10px]" />
+            </div>
+            <Skeleton className="w-[90px] h-[10px]" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Sheet>
@@ -142,8 +162,8 @@ export default function CommentSheet({ id }: { id: string }) {
                             setUpdateId(bun.id);
                             return;
                           }
-                          console.log({
-                            error: "You are not the own of this comment",
+                          toast("Error", {
+                            description: "You are not the own of this comment",
                           });
                         }}
                       >
@@ -154,11 +174,14 @@ export default function CommentSheet({ id }: { id: string }) {
                         onClick={async () => {
                           if (bun.userId === userData.id) {
                             const data = await deletecomment(bun.id);
-                            console.log(await data);
+                            // console.log(await data);
+                            toast("Comment", {
+                              description: "Comment deleted Successfully",
+                            });
                             return;
                           }
-                          console.log({
-                            error: "You are not the own of this comment",
+                          toast("Error", {
+                            description: "You are not the own of this comment",
                           });
                         }}
                       >
@@ -184,11 +207,15 @@ export default function CommentSheet({ id }: { id: string }) {
               onClick={async () => {
                 if (isUpdating) {
                   const data = await updatecomment({ id: updateId, content });
-                  console.log(await data);
+                  toast("Comment", {
+                    description: "Commment has updated",
+                  });
                   setContent("");
                 } else {
                   const data = await postcomment({ id, content });
-                  console.log(await data);
+                  toast("Comment", {
+                    description: "Comment has added",
+                  });
                   setContent("");
                 }
               }}

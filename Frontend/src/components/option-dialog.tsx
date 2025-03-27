@@ -10,8 +10,8 @@ import {
 import {
   BookmarkCheck,
   BookmarkIcon,
+  Check,
   Ellipsis,
-  Link2Icon,
   Link2Off,
   QrCodeIcon,
   Trash2Icon,
@@ -22,6 +22,7 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteBlog } from "@/lib/fetchdata/blogApi";
+import { toast } from "sonner";
 
 export default function OptionDialog({
   blogOwner,
@@ -38,7 +39,7 @@ export default function OptionDialog({
 }) {
   const queryClient = useQueryClient();
   const [copy, setCopy] = useState<boolean>(false);
-  const BASEURL = `http://localhost:5173/blog/${blogId}`;
+  const BASEURL = `https://zen-organized-blog.vercel.app/blog/${blogId}`;
 
   const handleClick = () => {
     navigator.clipboard.writeText(BASEURL);
@@ -77,7 +78,7 @@ export default function OptionDialog({
                 size={30}
                 onClick={async () => {
                   const data = await savebtnFn(saveId);
-                  console.log(await data);
+                  // console.log(await data);
                 }}
               />
             ) : (
@@ -85,7 +86,7 @@ export default function OptionDialog({
                 size={30}
                 onClick={async () => {
                   const data = await savebtnFn(saveId);
-                  console.log(await data);
+                  // console.log(await data);
                 }}
               />
             )}
@@ -99,7 +100,7 @@ export default function OptionDialog({
             {copy ? (
               <Link2Off size={30} className="transform -rotate-45" />
             ) : (
-              <Link2Icon size={30} className="transform -rotate-45" />
+              <Check size={30} className="transform -rotate-45" />
             )}
           </div>
 
@@ -133,10 +134,15 @@ export default function OptionDialog({
           onClick={async () => {
             if (blogOwner === userData.id) {
               const data = await removeblog({ id: blogId });
-              console.log(data);
+              toast("Blog Post", {
+                description: "Blog post deleted Successfully",
+              });
+              // console.log(data);
               return;
             }
-            console.log({ error: "You are not the owner of this post" });
+            toast("Error", {
+              description: "You are not the owner of this post",
+            });
           }}
         >
           {" "}
