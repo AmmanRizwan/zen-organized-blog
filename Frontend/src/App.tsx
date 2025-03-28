@@ -15,6 +15,7 @@ import SingleBlogPage from "./pages/SingleBlogPage.tsx";
 import ProtectedRoute from "./pages/ProtectedRoute.tsx";
 import { useContext } from "react";
 import { DataContext } from "./context/DataContext.tsx";
+import ForgotPassword from "./pages/ForgotPassword.tsx";
 
 function App() {
   const { isAuth }: any = useContext(DataContext);
@@ -31,6 +32,10 @@ function App() {
           <Route
             path="/signup"
             element={isAuth ? <Navigate to={"/"} /> : <SignupPage />}
+          />
+          <Route
+            path="/forgot"
+            element={isAuth ? <Navigate to={"/"} /> : <ForgotPassword />}
           />
 
           {/* Authenticated Pages */}
