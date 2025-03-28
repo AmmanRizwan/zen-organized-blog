@@ -1,3 +1,4 @@
+import { font_style } from "@/components/font-selector";
 import TemplateBlog from "@/components/template-blog";
 import { Skeleton } from "@/components/ui/skeleton";
 import { singleBlog } from "@/lib/fetchdata/blogApi";
@@ -15,7 +16,7 @@ export default function SingleBlogPage() {
 
   if (isLoading) {
     return (
-      <div className="flex w-full justify-center">
+      <div className={`flex w-full justify-center font-['${font_style}']`}>
         <div className="flex flex-col">
           <div className="sm:block hidden">
             <div className="flex gap-4 my-3 items-center">

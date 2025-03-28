@@ -1,11 +1,12 @@
 import CustomHead from "@/components/custom-head";
+import { font_style } from "@/components/font-selector";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Bug } from "lucide-react";
 
 export default function SearchPage() {
   return (
-    <div className="w-full flex justify-center">
+    <div className={`w-full flex justify-center font-['${font_style}']`}>
       <div className="flex flex-col w-5/6">
         <CustomHead
           title="Search People"

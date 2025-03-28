@@ -7,7 +7,7 @@ const config: Config = {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
         manrope: ["Manrope", "sans-serif"],
-        jetbrains: ["JetBrains Mono", "monospace"],
+        jetbrains: ["JetBrains Mono"],
         poppins: ["Poppins", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],

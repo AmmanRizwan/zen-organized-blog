@@ -1,3 +1,4 @@
+import { font_style } from "@/components/font-selector";
 import TemplateBlog from "@/components/template-blog";
 import { Skeleton } from "@/components/ui/skeleton";
 import { likeBlogs } from "@/lib/fetchdata/likeApi";
@@ -82,7 +83,7 @@ export default function LikedPage() {
   }
 
   return (
-    <div className="w-full mb-20 flex justify-center">
+    <div className={`w-full mb-20 flex justify-center font-['${font_style}]`}>
       <div>
         <div className="my-6 px-3">
           <h1 className="text-3xl font-bold select-none">Liked Blog</h1>

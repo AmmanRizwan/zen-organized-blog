@@ -134,7 +134,7 @@ export function LoginForm({
                 onClick={() =>
                   toast("User Login", {
                     description:
-                      "Sorry! Google Login is not Available Right Now. We are working on it.",
+                      "Sorry! Google Login is not Available Right Now. We are working on it. We are requesting you to Signup.",
                   })
                 }
               >

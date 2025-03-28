@@ -1,4 +1,5 @@
 import CustomHead from "@/components/custom-head";
+import { font_style } from "@/components/font-selector";
 import ProfileBlogTemplate from "@/components/profile-blog-template";
 import ProfileDisplay from "@/components/profile-display";
 import { Button } from "@/components/ui/button";
@@ -37,7 +38,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="flex justify-center w-full">
+    <div className={`flex justify-center w-full font-['${font_style}']`}>
       <div className="w-5/6 flex flex-col">
         <CustomHead title="User Profile" description="" />
         <ProfileDisplay username={username!} />

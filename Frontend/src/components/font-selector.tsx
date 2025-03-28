@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 
-export const font_style = localStorage.getItem("font-style") || "system";
+export const font_style = localStorage.getItem("font-style") || "jetbrains";
 
 export function FontSelector() {
   const [font, setFont] = useState<string>(localStorage.getItem("font-style")!);
@@ -25,8 +25,8 @@ export function FontSelector() {
         <SelectGroup>
           <SelectLabel>Select Fonts</SelectLabel>
           <SelectItem value="inter">Inter</SelectItem>
-          <SelectItem value="manrope">Manrope</SelectItem>
-          <SelectItem value="jetbrains">JetBrains Mono</SelectItem>
+          <SelectItem value="poppins">Poppins</SelectItem>
+          <SelectItem value="gidole">Gidole</SelectItem>
           <SelectItem value="roboto">Roboto</SelectItem>
         </SelectGroup>
       </SelectContent>

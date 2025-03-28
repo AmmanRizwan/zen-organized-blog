@@ -1,3 +1,4 @@
+import { font_style } from "@/components/font-selector";
 import TemplateBlog from "@/components/template-blog";
 import { Skeleton } from "@/components/ui/skeleton";
 import { allBlogs } from "@/lib/fetchdata/blogApi";
@@ -76,7 +77,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="w-full flex justify-center">
+    <div className={`w-full flex justify-center font-['${font_style}']`}>
       <div className="my-2">
         {Blogs?.map((blog: IBlog) => {
           return (

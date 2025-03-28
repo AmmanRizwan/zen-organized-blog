@@ -9,6 +9,7 @@ import { DataContext } from "@/context/DataContext";
 import { useMutation } from "@tanstack/react-query";
 import { updateProfile } from "@/lib/fetchdata/userApi";
 import { toast } from "sonner";
+import { font_style } from "@/components/font-selector";
 
 export default function SettingPage() {
   const { userData } = useContext(DataContext)!;
@@ -25,7 +26,7 @@ export default function SettingPage() {
   });
 
   return (
-    <div className="w-full justify-center flex">
+    <div className={`w-full justify-center flex font-['${font_style}']`}>
       <div className="flex flex-col sm:w-5/6 px-6">
         <CustomHead
           title={"Settings"}

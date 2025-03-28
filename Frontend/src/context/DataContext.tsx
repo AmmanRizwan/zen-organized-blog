@@ -3,7 +3,6 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ThemeProvider } from "@/components/theme-provider.tsx";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar.tsx";
-import { font_style } from "@/components/font-selector";
 import { Toaster } from "@/components/ui/sonner";
 
 interface ILoginUserData {
@@ -32,8 +31,6 @@ export default function DataContextProvider({
     isAuth,
     userData,
   };
-
-  document.body.classList.add(`font-${font_style}`);
 
   return (
     <DataContext.Provider value={contextValue}>

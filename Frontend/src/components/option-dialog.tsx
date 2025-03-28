@@ -13,6 +13,7 @@ import {
   Check,
   Ellipsis,
   Link2,
+  Loader2,
   QrCodeIcon,
   Trash2Icon,
 } from "lucide-react";
@@ -49,7 +50,7 @@ export default function OptionDialog({
     }, 1000);
   };
 
-  const { mutateAsync: removeblog } = useMutation({
+  const { mutateAsync: removeblog, isPending } = useMutation({
     mutationFn: deleteBlog,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["blogs"] });
@@ -128,7 +129,7 @@ export default function OptionDialog({
         <Separator />
         <Button
           variant={"destructive"}
-          className="text-muted-foreground flex gap-3 items-center"
+          className="flex gap-3 items-center"
           onClick={async () => {
             if (blogOwner === userData.id) {
               await removeblog({ id: blogId });
@@ -141,9 +142,17 @@ export default function OptionDialog({
               description: "You are not the owner of this post",
             });
           }}
+          disabled={isPending}
         >
           {" "}
-          <Trash2Icon size={20} /> Delete Post
+          <Trash2Icon size={20} />{" "}
+          {isPending ? (
+            <>
+              <Loader2 className="animate-spin" /> Please Wait
+            </>
+          ) : (
+            "Delete Post"
+          )}
         </Button>
       </DialogContent>
     </Dialog>

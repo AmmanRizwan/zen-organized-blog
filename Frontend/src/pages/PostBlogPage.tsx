@@ -1,9 +1,11 @@
 import CustomHead from "@/components/custom-head";
+import { font_style } from "@/components/font-selector";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { createBlog } from "@/lib/fetchdata/blogApi";
 import { useMutation } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -12,12 +14,12 @@ export default function PostBlog() {
     { title: "", body: "" }
   );
 
-  const { mutateAsync: post } = useMutation({
+  const { mutateAsync: post, isPending } = useMutation({
     mutationFn: createBlog,
   });
 
   return (
-    <div className="w-full flex justify-center">
+    <div className={`w-full flex justify-center font-['${font_style}']`}>
       <div className="flex flex-col w-5/6">
         <CustomHead
           title="Create Your Blog Post"
@@ -54,8 +56,15 @@ export default function PostBlog() {
                 description: "The Post has successfully created",
               });
             }}
+            disabled={isPending}
           >
-            Send Post
+            {isPending ? (
+              <>
+                <Loader2 className="animate-spin" /> Please Wait
+              </>
+            ) : (
+              "Send Post"
+            )}
           </Button>
         </div>
       </div>

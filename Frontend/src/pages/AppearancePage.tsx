@@ -1,11 +1,11 @@
 import CustomHead from "@/components/custom-head";
-import { FontSelector } from "@/components/font-selector";
+import { font_style, FontSelector } from "@/components/font-selector";
 import ToggleTheme from "@/components/toogle-theme";
 import { Label } from "@/components/ui/label";
 
 export default function AppearancePage() {
   return (
-    <div className="w-full justify-center flex">
+    <div className={`w-full justify-center flex font['${font_style}']`}>
       <div className="flex flex-col w-5/6">
         <CustomHead
           title={"Appearance"}
