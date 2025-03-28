@@ -47,14 +47,18 @@ export default function PostBlog() {
             className="bg-green-500 hover:bg-green-600 active:bg-green-500 text-sm px-6 !py-1"
             onClick={async () => {
               const data = await post(blogDetail);
-              console.log(await data);
-              setBlogDetail({ title: "", body: "" });
-              setTimeout(() => {
-                window.location.href = "/";
-              }, 1000);
-              toast("Blog Post", {
-                description: "The Post has successfully created",
-              });
+              if (data?.error) {
+                console.log(await data);
+                return;
+              } else {
+                setBlogDetail({ title: "", body: "" });
+                setTimeout(() => {
+                  window.location.href = "/";
+                }, 1000);
+                toast("Blog Post", {
+                  description: "The Post has successfully created",
+                });
+              }
             }}
             disabled={isPending}
           >

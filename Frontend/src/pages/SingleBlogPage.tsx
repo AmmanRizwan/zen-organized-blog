@@ -56,7 +56,7 @@ export default function SingleBlogPage() {
           username={single?.users?.username}
           name={single?.users?.name}
           title={single?.title}
-          body={single?.title}
+          body={single?.body}
         />
       </div>
     </div>

@@ -5,7 +5,7 @@ import prisma from "../lib/prisma.js";
 const getAllBlog = async (req, res) => {
   try {
     const all_post = await prisma.post.findMany({
-      orderBy: { createdAt: "asc" },
+      orderBy: { createdAt: "desc" },
       include: {
         users: { select: { username: true, name: true } },
         likes: { select: { likeuser: true } },

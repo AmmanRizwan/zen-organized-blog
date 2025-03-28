@@ -3,9 +3,11 @@ import { font_style } from "@/components/font-selector";
 import ProfileBlogTemplate from "@/components/profile-blog-template";
 import ProfileDisplay from "@/components/profile-display";
 import { Button } from "@/components/ui/button";
+import { DataContext } from "@/context/DataContext";
 import { userBlog } from "@/lib/fetchdata/blogApi";
 import { useQuery } from "@tanstack/react-query";
 import { Info, Loader2 } from "lucide-react";
+import { useContext } from "react";
 import type { Params } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
@@ -20,6 +22,7 @@ interface IUserBlogs {
 
 export default function ProfilePage() {
   const { username }: Readonly<Params<string>> = useParams();
+  const { userData }: any = useContext(DataContext);
 
   const { data: userBlogs, isLoading } = useQuery({
     queryKey: ["blogs"],
@@ -64,11 +67,19 @@ export default function ProfilePage() {
           ) : (
             <div className="w-full flex justify-center items-center flex-col gap-4 py-4 pb-20">
               <Info size={55} />
-              <div className="text-3xl font-medium ">No Blog Posts</div>
+              <div className="text-3xl font-medium ">
+                {isLoading
+                  ? "No Blog Posts"
+                  : "Checking is there any Blog Post"}
+              </div>
               <div>
-                <a href="/create">
-                  <Button>Create Post</Button>
-                </a>
+                {username === userData?.username ? (
+                  <a href="/create">
+                    <Button>Create Post</Button>
+                  </a>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           )}

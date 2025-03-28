@@ -1,7 +1,7 @@
 model Post {
   id        String    @id @default(uuid())
-  title     String    @db.VarChar(50)
-  body      String    @db.VarChar(500)
+  title     String    @db.VarChar(250)
+  body      String    @db.VarChar(1000)
   users     Users     @relation(fields: [userId], references: [id])
   userId    String
   updatedAt DateTime  @updatedAt
