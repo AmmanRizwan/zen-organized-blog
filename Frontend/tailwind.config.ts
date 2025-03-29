@@ -6,14 +6,9 @@ const config: Config = {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
-        manrope: ["Manrope", "sans-serif"],
-        jetbrains: ["JetBrains Mono"],
         poppins: ["Poppins", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
-        montserrat: ["Montserrat", "sans-serif"],
-        fira: ["Fira Code", "monospace"],
-        merriweather: ["Merriweather", "serif"],
-        playfair: ["Playfair Display", "serif"],
+        gidole: ["Gidole", "sans-serif"],
       },
     },
   },

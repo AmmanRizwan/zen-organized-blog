@@ -19,7 +19,7 @@ export default function PostBlog() {
   });
 
   return (
-    <div className={`w-full flex justify-center !font-['${font_style}']`}>
+    <div className={`w-full flex justify-center font-${font_style}`}>
       <div className="flex flex-col w-5/6">
         <CustomHead
           title="Create Your Blog Post"

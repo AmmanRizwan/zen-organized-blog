@@ -32,7 +32,7 @@ export default function ProfilePage() {
   if (isLoading) {
     return (
       <div
-        className={`flex justify-center items-center w-full my-20 flex-col gap-4 !font-['${font_style}]`}
+        className={`flex justify-center items-center w-full my-20 flex-col gap-4 font-${font_style}`}
       >
         <div>
           <Loader2 size={50} className="animate-spin" />

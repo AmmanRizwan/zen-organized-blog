@@ -10,6 +10,7 @@ import { toggleLike } from "@/lib/fetchdata/likeApi";
 import { toggleSave } from "@/lib/fetchdata/saveApi";
 import LikeButton from "./like-button";
 import SaveButton from "./save-button";
+import { font_style } from "./font-selector";
 
 export default function TemplateBlog({
   username,
@@ -67,7 +68,7 @@ export default function TemplateBlog({
   };
 
   return (
-    <div className="sm:w-[475px] sm:p-0 pl-4 pr-5">
+    <div className={`sm:w-[475px] sm:p-0 pl-4 pr-5 font-${font_style}`}>
       <div className="flex justify-between items-center py-2">
         <div className="flex gap-3 items-center">
           <div>

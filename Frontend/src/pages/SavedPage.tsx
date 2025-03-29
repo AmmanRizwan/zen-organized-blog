@@ -33,7 +33,7 @@ export default function SavedPage() {
 
   if (isLoading) {
     return (
-      <div className={`flex w-full justify-center !font-['${font_style}']`}>
+      <div className={`flex w-full justify-center font-${font_style}`}>
         <div className="flex flex-col">
           <div className="sm:block hidden">
             <div className="flex gap-4 my-3 items-center">
