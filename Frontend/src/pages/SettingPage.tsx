@@ -26,7 +26,7 @@ export default function SettingPage() {
   });
 
   return (
-    <div className={`w-full justify-center flex font-['${font_style}']`}>
+    <div className={`w-full justify-center flex !font-['${font_style}']`}>
       <div className="flex flex-col sm:w-5/6 px-6">
         <CustomHead
           title={"Settings"}

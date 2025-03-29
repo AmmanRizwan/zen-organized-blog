@@ -31,7 +31,9 @@ export default function ProfilePage() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center w-full my-20 flex-col gap-4">
+      <div
+        className={`flex justify-center items-center w-full my-20 flex-col gap-4 !font-['${font_style}]`}
+      >
         <div>
           <Loader2 size={50} className="animate-spin" />
         </div>
@@ -67,11 +69,7 @@ export default function ProfilePage() {
           ) : (
             <div className="w-full flex justify-center items-center flex-col gap-4 py-4 pb-20">
               <Info size={55} />
-              <div className="text-3xl font-medium ">
-                {isLoading
-                  ? "No Blog Posts"
-                  : "Checking is there any Blog Post"}
-              </div>
+              <div className="text-3xl font-medium ">No Blog Post</div>
               <div>
                 {username === userData?.username ? (
                   <a href="/create">

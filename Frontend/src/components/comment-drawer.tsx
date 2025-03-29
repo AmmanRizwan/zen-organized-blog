@@ -32,43 +32,44 @@ import {
 } from "./ui/dropdown-menu";
 import { DataContext } from "@/context/DataContext";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 export function CommentDrawer({ id }: { id: string }) {
   const { userData }: any = useContext(DataContext);
-
+  const [fetchComment, setFetchComment] = useState<boolean>(false);
   const queryClient = useQueryClient();
 
-  const { data: comments } = useQuery({
+  const { data: comments, refetch } = useQuery({
     queryKey: ["comments", id],
     queryFn: () => allComment(id),
-    enabled: !!id,
+    enabled: fetchComment,
   });
 
   const { mutateAsync: postcomment } = useMutation({
     mutationFn: createComment,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["comments"] });
+      queryClient.invalidateQueries({ queryKey: ["comments", id] });
     },
   });
 
   const { mutateAsync: deletecomment } = useMutation({
     mutationFn: removeComment,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["comments"] });
+      queryClient.invalidateQueries({ queryKey: ["comments", id] });
     },
   });
 
   const { mutateAsync: singlecomment } = useMutation({
     mutationFn: getsingleComment,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["comments"] });
+      queryClient.invalidateQueries({ queryKey: ["comments", id] });
     },
   });
 
   const { mutateAsync: updatecomment } = useMutation({
     mutationFn: editComment,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["comments"] });
+      queryClient.invalidateQueries({ queryKey: ["comments", id] });
     },
   });
 
@@ -80,7 +81,13 @@ export function CommentDrawer({ id }: { id: string }) {
     // Hidden the comment drawer when it is in desktop mode
     <Drawer>
       <DrawerTrigger>
-        <MessageCircleIcon className="cursor-pointer sm:hidden" />
+        <MessageCircleIcon
+          className="cursor-pointer sm:hidden"
+          onClick={() => {
+            setFetchComment(true);
+            refetch();
+          }}
+        />
       </DrawerTrigger>
       <DrawerContent className="h-[80vh]">
         <DrawerHeader>
@@ -110,9 +117,11 @@ export function CommentDrawer({ id }: { id: string }) {
                     </div>
                     <div className="flex flex-col">
                       <div className="flex gap-4 items-center">
-                        <div className="text-[13px] font-medium">
-                          {bun.users.username}
-                        </div>
+                        <Link to={`/profile/${bun.users.username}`}>
+                          <div className="text-[13px] font-medium">
+                            {bun.users.username}
+                          </div>
+                        </Link>
                       </div>
                       <div className="text-[14px] ">{bun.content}</div>
                     </div>

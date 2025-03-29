@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 
 export default function AppearancePage() {
   return (
-    <div className={`w-full justify-center flex font['${font_style}']`}>
+    <div className={`w-full justify-center flex !font-['${font_style}']`}>
       <div className="flex flex-col w-5/6">
         <CustomHead
           title={"Appearance"}
