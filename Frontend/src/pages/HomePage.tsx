@@ -20,7 +20,7 @@ export interface IBlog {
 }
 
 export default function HomePage() {
-  const { data: Blogs, isLoading } = useQuery({
+  const { data: Blogs, isLoading } = useQuery<IBlog[]>({
     queryFn: () => allBlogs(),
     queryKey: ["blogs"],
   });
