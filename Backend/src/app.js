@@ -18,7 +18,7 @@ const app = express();
 // Cross Site Resource Sharing
 app.use(
   cors({
-    origin: ["https://zen-organized-blog.vercel.app", "http://localhost:5173"],
+    origin: "https://zen-organized-blog.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
