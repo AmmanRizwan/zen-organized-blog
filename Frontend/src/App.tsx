@@ -16,6 +16,7 @@ import ProtectedRoute from "./pages/ProtectedRoute.tsx";
 import { useContext } from "react";
 import { DataContext } from "./context/DataContext.tsx";
 import ForgotPassword from "./pages/ForgotPassword.tsx";
+import LandingPage from "./pages/LandingPage.tsx";
 
 function App() {
   const { isAuth }: any = useContext(DataContext);
@@ -25,28 +26,29 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* UnAuthenticated Pages */}
-          <Route
-            path="/login"
-            element={isAuth ? <Navigate to={"/"} /> : <LoginPage />}
-          />
-          <Route
-            path="/signup"
-            element={isAuth ? <Navigate to={"/"} /> : <SignupPage />}
-          />
-          <Route
-            path="/forgot"
-            element={isAuth ? <Navigate to={"/"} /> : <ForgotPassword />}
-          />
+            <Route path="/" element={<LandingPage />} />
+            <Route
+              path="/login"
+              element={isAuth ? <Navigate to={"/dashboard"} /> : <LoginPage />}
+            />
+            <Route
+              path="/signup"
+              element={isAuth ? <Navigate to={"/dashboard"} /> : <SignupPage />}
+            />
+            <Route
+              path="/forgot"
+              element={isAuth ? <Navigate to={"/dashboard"} /> : <ForgotPassword />}
+            />
 
           {/* Authenticated Pages */}
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <HomePage />
-              </ProtectedRoute>
-            }
-          />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <HomePage />
+                </ProtectedRoute>
+              }
+            />
           <Route
             path="/create"
             element={
