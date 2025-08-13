@@ -3,6 +3,7 @@ import ShareDialog from "./share-dailog";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { getProfile } from "@/lib/fetchdata/userApi";
 import { Skeleton } from "./ui/skeleton";
+import DefaultProfile from "@/assets/default_profile.jpeg";
 
 export default function ProfileDisplay({ username }: { username: string }) {
   const { data: profile, isLoading } = useQuery({
@@ -30,7 +31,7 @@ export default function ProfileDisplay({ username }: { username: string }) {
     <div className="flex items-center gap-10 sm:flex-row flex-col">
       <div className="my-4">
         <Avatar className="w-[200px] h-[200px]">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarImage src={DefaultProfile} alt="@shadcn" />
           <AvatarFallback className="text-[100px] font-medium capitalize">
             {profile?.name?.slice(0, 1)}
           </AvatarFallback>

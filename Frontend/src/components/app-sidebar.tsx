@@ -15,6 +15,7 @@ import { NavUser } from "./nav-user";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { DataContext } from "@/context/DataContext";
 import { useContext } from "react";
+import DefaultProfile from "@/assets/default_profile.jpeg";
 
 // Menu items.
 const items = [
@@ -91,7 +92,7 @@ export function AppSidebar() {
           user={{
             name: userData?.name,
             email: userData?.email,
-            avatar: "https://github.com/shadcn.png",
+            avatar: DefaultProfile,
           }}
         />
       </SidebarFooter>
