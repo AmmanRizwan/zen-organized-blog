@@ -12,8 +12,8 @@ type SEOHeadProps = {
 export default function SEOHead({
   title,
   description,
-  image = 'https://zen-organized-blog.vercel.app/og-image.jpg',
-  url = 'https://zen-organized-blog.vercel.app',
+  image = 'https://zenorganizedblog.vercel.app/og-image.jpg',
+  url = 'https://zenorganizedblog.vercel.app',
   type = 'website',
   keywords = [],
 }: SEOHeadProps) {
