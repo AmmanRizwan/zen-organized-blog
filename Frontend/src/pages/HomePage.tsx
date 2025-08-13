@@ -4,6 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { allBlogs } from "@/lib/fetchdata/blogApi";
 import { useQuery } from "@tanstack/react-query";
 import { Info, Loader2 } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 
 export interface IBlog {
   id: string;
@@ -77,42 +78,49 @@ export default function HomePage() {
   }
 
   return (
-    <div className={`w-full flex justify-center font-['${font_style}']`}>
-      <div className="my-2">
-        {Blogs?.length > 0 ? (
-          Blogs?.map((blog: IBlog) => {
-            return (
-              <TemplateBlog
-                createdAt={blog.createdAt}
-                blogOwner={blog.userId}
-                saveObj={blog.save}
-                userId={blog.likes}
-                saveId={blog.id}
-                likecount={blog.likes?.length}
-                blogId={blog.id}
-                postId={blog.id}
-                key={blog.id}
-                username={blog.users.username}
-                name={blog.users.name}
-                body={blog.body}
-                title={blog.title}
-              />
-            );
-          })
-        ) : (
-          <div className="flex flex-col justify-center items-center py-10 gap-3">
-            <div>
-              <Info size={50} />
+    <>
+      <SEOHead
+        title="Zen Blog - Your Organized Thoughts"
+        description="A modern blogging platform for organized thoughts and ideas"
+        keywords={["blogging", "writing", "thoughts", "organization"]}
+      />
+      <div className={`w-full flex justify-center font-['${font_style}']`}>
+        <div className="my-2">
+          {Blogs?.length > 0 ? (
+            Blogs?.map((blog: IBlog) => {
+              return (
+                <TemplateBlog
+                  createdAt={blog.createdAt}
+                  blogOwner={blog.userId}
+                  saveObj={blog.save}
+                  userId={blog.likes}
+                  saveId={blog.id}
+                  likecount={blog.likes?.length}
+                  blogId={blog.id}
+                  postId={blog.id}
+                  key={blog.id}
+                  username={blog.users.username}
+                  name={blog.users.name}
+                  body={blog.body}
+                  title={blog.title}
+                />
+              );
+            })
+          ) : (
+            <div className="flex flex-col justify-center items-center py-10 gap-3">
+              <div>
+                <Info size={50} />
+              </div>
+              <div className="text-2xl font-medium text-muted-foreground">
+                No Blog
+              </div>
+              <div className="text-muted-foreground">
+                Sorry! There is not blog post.
+              </div>
             </div>
-            <div className="text-2xl font-medium text-muted-foreground">
-              No Blog
-            </div>
-            <div className="text-muted-foreground">
-              Sorry! There is not blog post.
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
