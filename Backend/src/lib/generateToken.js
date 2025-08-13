@@ -8,7 +8,7 @@ const generateToken = (userId, res) => {
   res.cookie("blog_token", token, {
     httpOnly: true,
     secure: true,
-    sameSite: "None",
+    sameSite: "none", // lowercase "none" is required
     maxAge: 30 * 24 * 60 * 60 * 1000,
   });
 };
