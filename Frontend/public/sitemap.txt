@@ -1,0 +1,10 @@
+https://organizedblog.vercel.app/
+https://organizedblog.vercel.app/blog
+https://organizedblog.vercel.app/profile
+https://organizedblog.vercel.app/login
+https://organizedblog.vercel.app/signup
+https://zenorganizedblog.vercel.app/
+https://zenorganizedblog.vercel.app/blog
+https://zenorganizedblog.vercel.app/profile
+https://zenorganizedblog.vercel.app/login
+https://zenorganizedblog.vercel.app/signup
