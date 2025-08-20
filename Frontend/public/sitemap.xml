@@ -1,33 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://organizedblog.vercel.app/</loc>
-  </url>
-  <url>
-    <loc>https://organizedblog.vercel.app/blog</loc>
-  </url>
-  <url>
-    <loc>https://organizedblog.vercel.app/profile</loc>
-  </url>
-  <url>
-    <loc>https://organizedblog.vercel.app/login</loc>
-  </url>
-  <url>
-    <loc>https://organizedblog.vercel.app/signup</loc>
-  </url>
-  <url>
-    <loc>https://zenorganizedblog.vercel.app/</loc>
-  </url>
-  <url>
-    <loc>https://zenorganizedblog.vercel.app/blog</loc>
-  </url>
-  <url>
-    <loc>https://zenorganizedblog.vercel.app/profile</loc>
-  </url>
-  <url>
-    <loc>https://zenorganizedblog.vercel.app/login</loc>
-  </url>
-  <url>
-    <loc>https://zenorganizedblog.vercel.app/signup</loc>
-  </url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://zenorganizedblog.vercel.app/</loc>
+  <lastmod>2025-08-20T08:31:01+00:00</lastmod>
+</url>
+
+
 </urlset>
