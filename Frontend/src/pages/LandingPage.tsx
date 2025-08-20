@@ -4,49 +4,49 @@ import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-blue-50 text-gray-900 flex flex-col">
+    <div className="min-h-screen w-full bg-gradient-to-br from-white to-blue-50 text-gray-900 flex flex-col">
       {/* Header */}
       <header className="container mx-auto py-8 px-4 flex items-center justify-between">
-        <h1 className="text-3xl font-extrabold tracking-tight">Zen Organized Blog</h1>
-        <nav className="flex items-center gap-4">
-          <Link to="/login" className="hover:text-blue-600 font-medium">Login</Link>
+        <h1 className="text-xl md:text-3xl font-extrabold tracking-tight">Zen Organized Blog</h1>
+        <nav className="flex items-center gap-4 sm:flex-row flex-col-reverse">
+          <Link to="/login" className="hover:text-blue-600 font-medium cursor-pointer">Login</Link>
           <Link to="/signup">
-            <button className="ml-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold transition">Sign Up</button>
+            <button className="ml-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold transition cursor-pointer">Sign Up</button>
           </Link>
         </nav>
       </header>
 
       {/* Hero Section */}
       <section className="flex-1 flex flex-col items-center justify-center text-center px-4">
-        <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">Write. Organize. Inspire.</h2>
-        <p className="text-xl md:text-2xl max-w-2xl mx-auto mb-10 text-gray-700">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">Write. Organize. Inspire.</h2>
+        <p className="text-md sm:text-xl md:text-2xl max-w-2xl mx-auto mb-10 text-gray-700">
           A modern, minimal, and distraction-free blogging platform for creators who value clarity, focus, and beautiful presentation. Share your thoughts, grow your audience, and join a thriving community of writers.
         </p>
         <div className="flex flex-col md:flex-row gap-4 justify-center">
           <Link to="/signup">
-            <button className="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700 transition">Get Started Free</button>
+            <button className="px-4 py-3 md:px-8 md:py-3 bg-blue-600 text-white rounded-lg text-sm sm:text-md md:text-lg font-semibold hover:bg-blue-700 transition">Get Started Free</button>
           </Link>
           <Link to="/login">
-            <button className="px-8 py-3 border border-blue-600 text-blue-600 rounded-lg text-lg font-semibold hover:bg-blue-50 transition">Log In</button>
+            <button className="px-4 py-3 md:px-8 md:py-3 border border-blue-600 text-blue-600 rounded-lg text-sm sm:text-md text-lg font-semibold hover:bg-blue-50 transition">Log In</button>
           </Link>
         </div>
       </section>
 
       {/* Features Section */}
       <section className="container mx-auto py-20 px-4">
-        <h3 className="text-3xl font-bold mb-10 text-center">Why Zen Organized Blog?</h3>
+        <h3 className="text-xl md:text-3xl font-bold mb-10 text-center">Why Zen Organized Blog?</h3>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-            <h4 className="text-xl font-bold mb-3">Distraction-Free Writing</h4>
-            <p>Our clean, minimal interface lets you focus on your words, not the noise.</p>
+            <h4 className="text-md sm:text-xl font-bold mb-3">Distraction-Free Writing</h4>
+            <p className="text-sm md:text-md">Our clean, minimal interface lets you focus on your words, not the noise.</p>
           </div>
           <div className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-            <h4 className="text-xl font-bold mb-3">Smart Organization</h4>
-            <p>Tag, categorize, and manage your posts with ease. Find everything, fast.</p>
+            <h4 className="text-md sm:text-xl font-bold mb-3">Smart Organization</h4>
+            <p  className="text-sm md:text-md">Tag, categorize, and manage your posts with ease. Find everything, fast.</p>
           </div>
           <div className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-            <h4 className="text-xl font-bold mb-3">Beautiful by Default</h4>
-            <p>Your writing always looks great with our modern, responsive design.</p>
+            <h4 className="text-md sm:text-xl font-bold mb-3">Beautiful by Default</h4>
+            <p  className="text-sm md:text-md">Your writing always looks great with our modern, responsive design.</p>
           </div>
         </div>
       </section>
