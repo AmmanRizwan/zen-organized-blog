@@ -17,7 +17,6 @@ import { useContext } from "react";
 import { DataContext } from "./context/DataContext.tsx";
 import ForgotPassword from "./pages/ForgotPassword.tsx";
 import LandingPage from "./pages/LandingPage.tsx";
-import Copy from "./pages/Copy.tsx";
 
 function App() {
   const { isAuth }: any = useContext(DataContext);
@@ -27,7 +26,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* UnAuthenticated Pages */}
-          <Route path="/user" element={<Copy />} />
             <Route path="/" element={isAuth ? <Navigate to={"/dashboard"} /> : <LandingPage />} />
             <Route
               path="/login"
