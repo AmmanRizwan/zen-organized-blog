@@ -1,39 +1,44 @@
-import { createContext, ReactNode } from "react";
+import { ReactNode } from "react";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ThemeProvider } from "@/components/theme-provider.tsx";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar.tsx";
 import { Toaster } from "@/components/ui/sonner";
+import AuthContext, { type ILoginUserData, type AuthContextType } from "./AuthContext";
 
-interface ILoginUserData {
-  id: string;
-  username: string;
-  name: string;
-  email: string;
-}
-
-interface DataContextType {
-  isAuth: string;
-  userData: ILoginUserData;
-}
-
-export const DataContext = createContext<DataContextType | null>(null);
+export type { ILoginUserData, AuthContextType };
+export { AuthContext as DataContext };
 
 export default function DataContextProvider({
   children,
 }: {
   children: ReactNode;
 }) {
-  const userData: ILoginUserData = JSON.parse(localStorage.getItem("user")!);
-  const isAuth: string = localStorage.getItem("user")!;
+  const storedUser = localStorage.getItem("user");
+  const userData: ILoginUserData | null = storedUser ? JSON.parse(storedUser) : null;
+  const isAuth: boolean = !!userData;
   const queryClient = new QueryClient();
+
+  const login = (userData: ILoginUserData) => {
+    localStorage.setItem("user", JSON.stringify(userData));
+    window.location.href = '/'; // Redirect to home page after login
+  };
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    queryClient.clear(); // Clear any cached queries
+    window.location.href = '/login';
+  };
+
   const contextValue = {
     isAuth,
     userData,
+    login,
+    logout,
   };
 
   return (
-    <DataContext.Provider value={contextValue}>
+    <AuthContext.Provider value={contextValue}>
       <QueryClientProvider client={queryClient}>
         <SidebarProvider>
           <AppSidebar />
@@ -42,6 +47,6 @@ export default function DataContextProvider({
         </SidebarProvider>
       </QueryClientProvider>
       <Toaster />
-    </DataContext.Provider>
+    </AuthContext.Provider>
   );
 }

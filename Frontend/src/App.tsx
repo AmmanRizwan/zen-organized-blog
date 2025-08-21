@@ -1,25 +1,24 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Pages
-import HomePage from "./pages/HomePage.tsx";
-import LoginPage from "./pages/LoginPage.tsx";
-import SignupPage from "./pages/SignupPage.tsx";
-import PostBlogPage from "./pages/PostBlogPage.tsx";
-import SettingPage from "./pages/SettingPage.tsx";
-import ProfilePage from "./pages/ProfilePage.tsx";
-import AppearancePage from "./pages/AppearancePage.tsx";
-import SearchPage from "./pages/SearchPage.tsx";
-import SavedPage from "./pages/SavedPage.tsx";
-import LikedPage from "./pages/LikedPage.tsx";
-import SingleBlogPage from "./pages/SingleBlogPage.tsx";
-import ProtectedRoute from "./pages/ProtectedRoute.tsx";
-import { useContext } from "react";
-import { DataContext } from "./context/DataContext.tsx";
-import ForgotPassword from "./pages/ForgotPassword.tsx";
-import LandingPage from "./pages/LandingPage.tsx";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import PostBlogPage from "./pages/PostBlogPage";
+import SettingPage from "./pages/SettingPage";
+import ProfilePage from "./pages/ProfilePage";
+import AppearancePage from "./pages/AppearancePage";
+import SearchPage from "./pages/SearchPage";
+import SavedPage from "./pages/SavedPage";
+import LikedPage from "./pages/LikedPage";
+import SingleBlogPage from "./pages/SingleBlogPage";
+import ProtectedRoute from "./pages/ProtectedRoute";
+import { useAuth } from "./context/useAuth";
+import ForgotPassword from "./pages/ForgotPassword";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
-  const { isAuth }: any = useContext(DataContext);
+  const { isAuth } = useAuth();
 
   return (
     <>
